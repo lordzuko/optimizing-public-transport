@@ -1,7 +1,7 @@
 {
     "type": "record",
-    "name": "arrival_value",
-    "namespace": "com.udacity.optimizing_public_transport",
+    "name": "arrival.value",
+    "namespace": "com.udacity",
     "fields": [
         {"name":"station_id", "type":"int"},
         {"name":"train_id", "type":"string"},
