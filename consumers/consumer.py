@@ -79,7 +79,7 @@ class KafkaConsumer:
                 return 1
             else:
                 if message.error():
-                    print(f"error from consumer {self.topic_name_pattern} {message.error()}")
+                    logger.info(f"error from consumer {self.topic_name_pattern} {message.error()}")
                 else:
                     print(f"Unknown error from consumer {self.topic_name_pattern}")
                 return 0
