@@ -9,6 +9,6 @@
         {"name":"line", "type":"string"},
         {"name":"train_status", "type":"string"},
         {"name":"prev_station_id", "type":["int", "null"]},
-        {"name":"prev_direction", "type":["int", "null"]}
+        {"name":"prev_direction", "type":["string", "null"]}
     ]
 }
