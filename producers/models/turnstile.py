@@ -41,8 +41,8 @@ class Turnstile(Producer):
             "org.cta.station.turnstile", #Using a single topic, not sure how to use regex with KSQL
             key_schema=Turnstile.key_schema,
             value_schema=Turnstile.value_schema, # Uncomment once schema is defined
-            num_partitions=3,
-            num_replicas=2,
+            num_partitions=2,
+            num_replicas=1,
         )
         self.station = station
         self.turnstile_hardware = TurnstileHardware(station)
