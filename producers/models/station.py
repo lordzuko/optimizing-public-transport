@@ -36,8 +36,9 @@ class Station(Producer):
         # TODO: Complete the below by deciding on a topic name, number of partitions, and number of
         # replicas
         #
-        #
-        topic_name = f"org.cta.station.arrivals.{station_name}" # Come up with a better topic name
+        # Error in consumer (\w*|\.)*stations.table(.(\w*|\.)): 'NoneType' object has no attribute 'error'
+        # topic_name = f"org.cta.station.arrivals.{station_name}" # Come up with a better topic name
+        topic_name = "org.cta.station.arrivals"
         super().__init__(
             topic_name,
             key_schema=Station.key_schema,
