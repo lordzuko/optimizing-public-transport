@@ -54,7 +54,7 @@ class Producer:
             default_value_schema=self.value_schema
         )
     
-    def topic_exists(client):
+    def topic_exists(self, client):
         """Checks if the given topic exists"""
         topics = client.list_topics(timeout=5)
         return topics.topics.get(self.topic_name) is not None
@@ -67,7 +67,7 @@ class Producer:
         })
         exists = self.topic_exists(client)
         if exists:
-            logger.info(f"topic already exists: {self.topic_name})
+            logger.info(f"topic already exists: {self.topic_name}")
         else:
             futures = client.create_topics([
                 NewTopic(
@@ -81,7 +81,7 @@ class Producer:
                     future.result()
                     logger.info(f"topic created: {self.topic_name}")
                 except Exception as e:
-                    logger.info(f"failed to create topic {topic_name}: {e}")
+                    logger.info(f"failed to create topic {self.topic_name}: {e}")
 
 
     def time_millis(self):
