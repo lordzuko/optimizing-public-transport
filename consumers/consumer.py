@@ -30,12 +30,6 @@ class KafkaConsumer:
         self.consume_timeout = consume_timeout
         self.offset_earliest = offset_earliest
 
-        #
-        #
-        # TODO: Configure the broker properties below. Make sure to reference the project README
-        # and use the Host URL for Kafka and Schema Registry!
-        #
-        #
         self.broker_properties = {
             "bootstrap.servers": "PLAINTEXT://kafka0:9092,PLAINTEXT://kafka1:9093,PLAINTEXT://kafka2:9094",
             "auto.offset.reset": "earliest",
@@ -79,20 +73,16 @@ class KafkaConsumer:
 
     def _consume(self):
         """Polls for a message. Returns 1 if a message was received, 0 otherwise"""
-        #
-        #
-        # TODO: Poll Kafka for messages. Make sure to handle any errors or exceptions.
-        # Additionally, make sure you return 1 when a message is processed, and 0 when no message
-        # is retrieved.
-        #
-        #
         try:
             message = self.consumer.poll(5)
             if message:
-                self.message_handler(msg)
+                self.message_handler(message)
                 return 1
-            else message.error() is not None:
-                print(f"error from consumer {self.topic_name_pattern} {message.error()}")
+            else:
+                if message.error():
+                    print(f"error from consumer {self.topic_name_pattern} {message.error()}")
+                else:
+                    print(f"Unknown error from consumer {self.topic_name_pattern}")
                 return 0
         except Exception as e:
             logger.error(f"Error in consumer {self.topic_name_pattern}: {e}")

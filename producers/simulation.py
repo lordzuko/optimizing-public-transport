@@ -48,7 +48,7 @@ class TimeSimulation:
                 TimeSimulation.weekdays.sat: {0: TimeSimulation.ten_min_frequency},
                 TimeSimulation.weekdays.sun: {0: TimeSimulation.ten_min_frequency},
             }
-
+        
         self.train_lines = [
             Line(Line.colors.blue, self.raw_df[self.raw_df["blue"]]),
             Line(Line.colors.red, self.raw_df[self.raw_df["red"]]),

@@ -38,9 +38,9 @@ class Turnstile(Producer):
         #
         #
         super().__init__(
-            f"{station_name}", # TODO: Come up with a better topic name
+            "org.cta.station.turnstile", #Using a single topic, not sure how to use regex with KSQL
             key_schema=Turnstile.key_schema,
-            value_schema=Turnstile.value_schema, TODO: Uncomment once schema is defined
+            value_schema=Turnstile.value_schema, # Uncomment once schema is defined
             num_partitions=3,
             num_replicas=2,
         )
@@ -49,7 +49,7 @@ class Turnstile(Producer):
 
     def run(self, timestamp, time_step):
         """Simulates riders entering through the turnstile."""
-        
+
         #
         #
         # TODO: Complete this function by emitting a message to the turnstile topic for the number
@@ -70,9 +70,9 @@ class Turnstile(Producer):
                     }
                 )
         except Exception as e:
-            logger.info(f"Failed to write to topic {self.topic_name} with error {e} \n
-                          Station ID: {self.station.station_id} \n
-                          Station Name: {self.station.name}\n
-                          Line Color: {self.s}" )
+            logger.info(f"Failed to write to topic {self.topic_name} with error {e} \n"
+                          "Station ID: {self.station.station_id} \n"
+                          "Station Name: {self.station.name}\n"
+                          "Line Color: {self.s}" )
         
         
