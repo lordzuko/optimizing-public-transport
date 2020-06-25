@@ -77,12 +77,6 @@ class KafkaConsumer:
             if message:
                 self.message_handler(message)
                 return 1
-            else:
-                if message.error():
-                    logger.info(f"error from consumer {self.topic_name_pattern} {message.error()}")
-                else:
-                    print(f"Unknown error from consumer {self.topic_name_pattern}")
-                return 0
         except Exception as e:
             logger.error(f"Error in consumer {self.topic_name_pattern}: {e}")
             return 0
