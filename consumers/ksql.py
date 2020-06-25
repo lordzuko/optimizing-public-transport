@@ -27,16 +27,16 @@ CREATE TABLE turnstile (
     station_name VARCHAR,
     line VARCHAR
 ) WITH (
-    KAFKA_TOPIC = "org.cta.station.turnstile",
-    VALUE_FORMAT = "avro",
-    KEY = "station_id"
+    KAFKA_TOPIC = 'org.cta.station.turnstile',
+    VALUE_FORMAT = 'avro',
+    KEY = 'station_id'
 );
 
 CREATE TABLE TURNSTILE_SUMMARY
-WITH (VALUE_FORMAT = "JSON") AS
+WITH (VALUE_FORMAT = 'JSON') AS
     SELECT station_id, COUNT(station_id) AS count
     FROM turnstile 
-    GROUP BY station_id
+    GROUP BY station_id;
 """
 
 
